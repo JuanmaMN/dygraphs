@@ -1,7 +1,6 @@
-# test
-Just a test
+# dygraphs analysis published
 
-Hi!!
 
-Just a test to see how I can organise my profile moving forward.
+1. Facebook, Inc.- Alphabet Inc. - Apple Inc. -  Share price comparison:  [link](http://rpubs.com/Juanma7/380963)
+
 
