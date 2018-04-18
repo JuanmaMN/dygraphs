@@ -1,4 +1,4 @@
-## Facebook - Alphabet - Apple  Share price comparison
+## Facebook, Inc. Share price comparison
 
 Published: http://rpubs.com/Juanma7/380963
 
@@ -34,7 +34,7 @@ Facebook_Class_A <- as.xts(Facebook_Class_A, order.by=as.Date(Facebook_Class_A$d
 2.  Comments
 
 
-## Facebook share price history
+## Facebook, Inc. share price history
 
 This anlaysis shows the share price trend for "Facebook, Inc. Class A Common Stock" since the company held its initial public offering (IPO) on Friday, May 18.
 
@@ -71,9 +71,9 @@ dygraph(Facebook_Class_A$close, main = "Facebook share price", ylab = "Price ($)
 
 ## Second Analysis
 
-## Facebook share price comparison with Alphabet Inc and   Apple Inc
+## Facebook, Inc. share price comparison with Alphabet Inc and  Apple Inc
 
-This analysis provides a share price comparison of Facebook, Inc., Apple Inc. and Alphabet Inc. since May 18th 2012, day when Facebook launched its IPO.
+This analysis provides a share price comparison of Facebook, Inc., Apple Inc. and Alphabet Inc. since May 18th 2012, day when Facebook, Inc. launched its IPO.
 
 - Data source:
 
