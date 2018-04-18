@@ -1,0 +1,146 @@
+## Facebook - Alphabet - Apple  Share price comparison
+
+Published: 
+
+
+#############   Markdown code
+
+1.   Upload packages and datasets
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(xts)
+library(zoo)
+library(dygraphs)
+library(dplyr)
+library(tidyr)
+library(scales)
+
+library(readr)
+Facebook_Class_A<- read_csv("~/R/HistoricalQuotes_Facebook_Class_A.csv")
+View(Facebook_Class_A)
+
+
+## convert to xts
+
+Facebook_Class_A <- as.xts(Facebook_Class_A, order.by=as.Date(Facebook_Class_A$date,format="%d/%m/%Y"))
+
+
+
+```
+
+2.  Comments
+
+
+## Facebook share price history
+
+This anlaysis shows the share price trend for "Facebook, Inc. Class A Common Stock" since the company held its initial public offering (IPO) on Friday, May 18.
+
+Data source: [Nasdaq](https://www.nasdaq.com/symbol/fb/historical) 
+
+
+3. Create kable table
+
+```{r echo=FALSE, results='asis', warning = FALSE}
+library(knitr)
+library(kableExtra)
+
+kable(Facebook_Class_A [1:5,], "html", caption = "Sample Data Table.", align=c(rep('c', 5))) %>%  kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+```
+
+4. dygraphs
+
+
+### Visualization with dygraphs
+
+Dygraphs is a visualization package available in R studio.  For more information, please visit this great tutorial [link](http://rstudio.github.io/dygraphs/).
+
+In the below graph, we can see the share price visualization with dygraphs. We have the ability to use the slider at the bottom to adjust the date range.
+
+
+```{r pressure, echo=FALSE, warning = FALSE}
+library(dygraphs)
+
+
+dygraph(Facebook_Class_A$close, main = "Facebook share price", ylab = "Price ($)") %>% dyOptions(fillGraph = TRUE, fillAlpha = 0.4, colors = RColorBrewer::brewer.pal(4, "Paired"))%>%dyRangeSelector(height = 20)%>% dyLimit(as.numeric(Facebook_Class_A[1,2]), color = "red")
+
+
+```
+
+## Second Analysis
+
+## Facebook share price comparison with Alphabet Inc and   Apple Inc
+
+This analysis provides a share price comparison of Facebook, Inc., Apple Inc. and Alphabet Inc. since May 18th 2012, day when Facebook launched its IPO.
+
+- Data source:
+
+  [Alphabet Inc. Class A Common Stock Historical Stock Prices](https://www.nasdaq.com/symbol/googl/historical)
+  
+  [Apple Inc. Common Stock Historical Stock Prices](https://www.nasdaq.com/symbol/aapl/historical)
+  
+  [Facebook, Inc. Class A Common Stock Historical Stock Prices](https://www.nasdaq.com/symbol/fb/historical)
+
+
+
+
+
+1. Upload the data
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+## Upload the data
+
+library(readxl)
+Data_Shares <- read_excel("~/R/Data_Shares.xlsx")
+View(Data_Shares)
+
+
+# Transform to xts
+
+Data_Shares  <- as.xts(Data_Shares, order.by=as.Date(Data_Shares$date,format="%Y-%m-%d"))
+
+
+
+
+
+```
+
+2.  Create kable table
+
+
+```{r echo=FALSE, warning = FALSE}
+library(knitr)
+library(kableExtra)
+
+kable(Data_Shares [1:5,], "html", caption = "Sample Data Table.", align=c(rep('c', 5))) %>%  kable_styling(bootstrap_options = "striped", full_width = F, position = "center")
+
+```
+
+
+3. Dygraphs
+
+### Visualization with dygraphs
+
+
+
+```{r echo=FALSE,}
+
+
+dygraph(Data_Shares, main = "Share price", ylab = "Price ($)")%>% dyRangeSelector(height = 20)%>%  dyLegend(show = "always", hideOnMouseOut = FALSE) 
+
+
+
+```
+
+## Code, questions and feedback
+
+
+The code for this article is publish in my [github account](https://github.com/JuanmaMN).
+
+Please feel free to reach out for any question or feedback.
+
